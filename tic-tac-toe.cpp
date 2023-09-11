@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>   // Para utilizar o comando "clear"
+#include <windows.h> // Apenas para sistemas Windows
 using namespace std;
 
 // Declaração das variáveis
@@ -93,6 +95,87 @@ bool gameTied()
     return true; // Todos os espaços estão preenchidos
 }
 
+// Função para inserir um símbolo no tabuleiro
+void insertSymbolOnBoard(char board[3][3], int player, int line, int column)
+{
+    char symbol = (player == 1) ? 'X' : 'O';
+    board[line][column] = symbol;
+}
+
+// Função para exibir o tabuleiro formatado com cores
+void displayFormattedBoard()
+{
+    system("cls"); // Limpa a tela do console (funciona no Windows)
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    // Cores dos jogadores
+    int colorPlayer1 = FOREGROUND_RED | FOREGROUND_INTENSITY;
+    int colorPlayer2 = FOREGROUND_BLUE | FOREGROUND_INTENSITY;
+
+    cout << "Jogo da Velha" << endl
+         << endl;
+    cout << "  0 1 2" << endl;
+    for (int i = 0; i < 3; i++)
+    {
+        cout << i << " ";
+        for (int j = 0; j < 3; j++)
+        {
+            if (board[i][j] == 'X')
+            {
+                SetConsoleTextAttribute(hConsole, colorPlayer1);
+            }
+            else if (board[i][j] == 'O')
+            {
+                SetConsoleTextAttribute(hConsole, colorPlayer2);
+            }
+            else
+            {
+                SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+            }
+            cout << board[i][j];
+            if (j < 2)
+            {
+                cout << " | ";
+            }
+        }
+        cout << endl;
+        if (i < 2)
+        {
+            cout << "  ---------" << endl;
+        }
+    }
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+    cout << endl;
+}
+
+// Função para solicitar a entrada do jogador
+void requestEntryPlayer()
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    cout << "Jogador ";
+    if (currentPlayer == 1)
+    {
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
+    }
+    else
+    {
+        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    }
+    cout << currentPlayer << ", sua vez!" << endl;
+
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
+
+    int line, column;
+    do
+    {
+        cout << "Informe a linha (0, 1 ou 2) e a coluna (0, 1 ou 2) separadas por espaco: ";
+        cin >> line >> column;
+    } while (line < 0 || line > 2 || column < 0 || column > 2 || board[line][column] != ' ');
+    insertSymbolOnBoard(board, currentPlayer, line, column);
+}
+
 // Função principal
 int main()
 {
@@ -103,21 +186,10 @@ int main()
     while (gameStatus == 0)
     { // Enquanto o jogo estiver em andamento
         // Exibe o tabuleiro
-        cout << "Jogador " << currentPlayer << ", sua vez!" << endl;
-        cout << "  0 1 2" << endl;
-        for (int i = 0; i < 3; i++)
-        {
-            cout << i << " ";
-            for (int j = 0; j < 3; j++)
-            {
-                cout << board[i][j] << " ";
-            }
-            cout << endl;
-        }
+        displayFormattedBoard();
 
         // Solicita a entrada do jogador
-        cout << "\nInforme a linha (0, 1 ou 2) e a coluna (0, 1 ou 2): ";
-        cin >> line >> column;
+        requestEntryPlayer();
 
         // Verifica se a jogada é válida
         if (line < 0 || line > 2 || column < 0 || column > 2 || board[line][column] != ' ')
@@ -127,16 +199,18 @@ int main()
         else
         {
             // Marca a jogada no tabuleiro
-            board[line][column] = (currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol;
+            insertSymbolOnBoard(board, currentPlayer, line, column);
 
             // Verifica se o jogador venceu
             if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
             {
+                displayFormattedBoard();
                 cout << "Jogador " << currentPlayer << " venceu!" << endl;
                 gameStatus = currentPlayer;
             }
             else if (gameTied())
             {
+                displayFormattedBoard();
                 cout << "O jogo terminou em empate!" << endl;
                 gameStatus = 3; // 3 representa empate
             }
@@ -170,7 +244,7 @@ int main()
     }
     else
     {
-        cout << "Obrigado por jogar! Até a próxima." << endl;
+        cout << "Obrigado por jogar! Ate a proxima." << endl;
     }
 
     return 0;
