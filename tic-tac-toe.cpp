@@ -115,7 +115,7 @@ void displayFormattedBoard()
 
     cout << "Jogo da Velha" << endl
          << endl;
-    cout << "  0 1 2" << endl;
+    cout << "  0   1   2" << endl;
     for (int i = 0; i < 3; i++)
     {
         cout << i << " ";
@@ -167,85 +167,88 @@ void requestEntryPlayer()
 
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
 
-    int line, column;
     do
     {
         cout << "Informe a linha (0, 1 ou 2) e a coluna (0, 1 ou 2) separadas por espaco: ";
         cin >> line >> column;
     } while (line < 0 || line > 2 || column < 0 || column > 2 || board[line][column] != ' ');
-    insertSymbolOnBoard(board, currentPlayer, line, column);
 }
 
 // Função principal
 int main()
 {
-    // Inicializa o jogo
-    initializeGame();
+    char playAgain;
 
-    // Loop principal do jogo
-    while (gameStatus == 0)
-    { // Enquanto o jogo estiver em andamento
-        // Exibe o tabuleiro
-        displayFormattedBoard();
+    do
+    {
+        // Inicializa o jogo
+        initializeGame();
 
-        // Solicita a entrada do jogador
-        requestEntryPlayer();
+        // Loop principal do jogo
+        while (gameStatus == 0)
+        { // Enquanto o jogo estiver em andamento
+            // Exibe o tabuleiro
+            displayFormattedBoard();
 
-        // Verifica se a jogada é válida
-        if (line < 0 || line > 2 || column < 0 || column > 2 || board[line][column] != ' ')
-        {
-            cout << "Jogada invalida! Tente novamente." << endl;
-        }
-        else
-        {
-            // Marca a jogada no tabuleiro
-            insertSymbolOnBoard(board, currentPlayer, line, column);
+            // Solicita a entrada do jogador
+            requestEntryPlayer();
 
-            // Verifica se o jogador venceu
-            if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
+            // Verifica se a jogada é válida
+            if (board[line][column] != ' ')
             {
-                displayFormattedBoard();
-                cout << "Jogador " << currentPlayer << " venceu!" << endl;
-                gameStatus = currentPlayer;
-            }
-            else if (gameTied())
-            {
-                displayFormattedBoard();
-                cout << "O jogo terminou em empate!" << endl;
-                gameStatus = 3; // 3 representa empate
+                cout << "Jogada invalida! Tente novamente." << endl;
             }
             else
             {
-                // Alterna para o próximo jogador
-                switchPlayer();
+                // Marca a jogada no tabuleiro
+                insertSymbolOnBoard(board, currentPlayer, line, column);
+
+                // Verifica se o jogador venceu
+                if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
+                {
+                    displayFormattedBoard();
+                    cout << "Jogador " << currentPlayer << " venceu!" << endl;
+                    gameStatus = currentPlayer;
+                }
+                else if (gameTied())
+                {
+                    displayFormattedBoard();
+                    cout << "O jogo terminou em empate!" << endl;
+                    gameStatus = 3; // 3 representa empate
+                }
+                else
+                {
+                    // Alterna para o próximo jogador
+                    switchPlayer();
+                }
             }
         }
-    }
 
-    // Exibe o resultado
-    if (gameStatus == 1 || gameStatus == 2)
-    {
-        cout << "Jogador " << gameStatus << " venceu!" << endl;
-    }
-    else if (gameStatus == 3)
-    {
-        cout << "O jogo terminou em empate!" << endl;
-    }
+        // Exibe o resultado
+        if (gameStatus == 1 || gameStatus == 2)
+        {
+            cout << "Jogador " << gameStatus << " venceu!" << endl;
+        }
+        else if (gameStatus == 3)
+        {
+            cout << "O jogo terminou em empate!" << endl;
+        }
 
-    // Pergunta se os jogadores desejam jogar novamente
-    char playAgain;
-    cout << "Deseja jogar novamente? (S/N): ";
-    cin >> playAgain;
+        // Pergunta se os jogadores desejam jogar novamente
+        cout << "Deseja jogar novamente? (S/N): ";
+        cin >> playAgain;
 
-    if (playAgain == 'S' || playAgain == 's')
-    {
-        // Reinicia o jogo
-        initializeGame();
-    }
-    else
-    {
-        cout << "Obrigado por jogar! Ate a proxima." << endl;
-    }
+        if (playAgain == 'S' || playAgain == 's')
+        {
+            // Reinicia o jogo
+            initializeGame();
+        }
+        else
+        {
+            cout << "Obrigado por jogar!" << endl;
+        }
+
+    } while (playAgain == 'S' || playAgain == 's');
 
     return 0;
 }
