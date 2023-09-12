@@ -20,4 +20,4 @@ This repository contains a simple and functional implementation of the classic T
 
 Feel free to explore and customize this source code to add additional features or improve the user interface. It's a great project for students looking to practice C++ programming concepts or simply have fun with a classic game!
 
-**Note:** Ensure that you have a C++ development environment set up on your system before running the game.
+**Note:** Ensure that you have a C++ development environment set up on your system before running the game. Due to the code having certain library imports related to the WIndowns operating system, it is likely that it will not work on another operating system.
