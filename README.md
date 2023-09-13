@@ -6,9 +6,9 @@ This repository contains simple implementations of the classic Tic-Tac-Toe (or N
 
 ### C++
 
-- [Tic-Tac-Toe in C++](cpp/tic_tac_toe.cpp): C++ implementation of Tic-Tac-Toe, where two players can play on the same computer.
+- [Tic-Tac-Toe in C++](cpp\tic-tac-toe.cpp): C++ implementation of Tic-Tac-Toe, where two players can play on the same computer.
 
-### Java
+<!-- ### Java
 
 - [Tic-Tac-Toe in Java](java/TicTacToe.java): Java implementation of Tic-Tac-Toe with a simple graphical interface.
 
@@ -18,7 +18,7 @@ This repository contains simple implementations of the classic Tic-Tac-Toe (or N
 
 ### JavaScript
 
-- [Tic-Tac-Toe in JavaScript](javascript/tic_tac_toe.js): JavaScript implementation of Tic-Tac-Toe that can be run in web browsers.
+- [Tic-Tac-Toe in JavaScript](javascript/tic_tac_toe.js): JavaScript implementation of Tic-Tac-Toe that can be run in web browsers. -->
 
 ## How to Run
 
