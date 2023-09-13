@@ -6,7 +6,7 @@ This repository contains simple implementations of the classic Tic-Tac-Toe (or N
 
 ### C++
 
-- [Tic-Tac-Toe in C++](cpp\tic-tac-toe.cpp): C++ implementation of Tic-Tac-Toe, where two players can play on the same computer.
+- [Tic-Tac-Toe in C++](cpp/tic-tac-toe.cpp): C++ implementation of Tic-Tac-Toe, where two players can play on the same computer.
 
 <!-- ### Java
 
