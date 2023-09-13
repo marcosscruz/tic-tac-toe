@@ -1,23 +1,37 @@
-# Tic-Tac-Toe Game in C++
+# Tic-Tac-Toe Implementations in Different Programming Languages
 
-## Description
+This repository contains simple implementations of the classic Tic-Tac-Toe (or Noughts and Crosses) game in various programming languages, including C++, Java, Python, and JavaScript. The goal is to showcase how the same game can be created in different languages, enabling a comparison between them.
 
-This repository contains a simple and functional implementation of the classic Tic-Tac-Toe game in C++. Tic-Tac-Toe, also known as "Noughts and Crosses," is a strategy game for two players where the goal is to fill three consecutive spaces horizontally, vertically, or diagonally with your symbol (X or O).
+## Implementations
 
-## Key Features
+### C++
 
-- Play the Tic-Tac-Toe game against a human opponent on the same computer.
-- Player switching and checking for victory or a draw.
-- Display the game board on the screen to track the game's progress.
-- Option to play again after the end of a match.
+- [Tic-Tac-Toe in C++](cpp/tic_tac_toe.cpp): C++ implementation of Tic-Tac-Toe, where two players can play on the same computer.
 
-## How to Run the Game
+### Java
 
-1. Clone or download this repository to your local machine.
-2. Compile the source code (the .cpp file) using a compatible C++ compiler.
-3. Run the game in the terminal or command prompt.
-4. Follow the on-screen instructions to make your moves.
+- [Tic-Tac-Toe in Java](java/TicTacToe.java): Java implementation of Tic-Tac-Toe with a simple graphical interface.
 
-Feel free to explore and customize this source code to add additional features or improve the user interface. It's a great project for students looking to practice C++ programming concepts or simply have fun with a classic game!
+### Python
 
-**Note:** Ensure that you have a C++ development environment set up on your system before running the game. Due to the code having certain library imports related to the WIndowns operating system, it is likely that it will not work on another operating system.
+- [Tic-Tac-Toe in Python](python/tic_tac_toe.py): Python implementation of Tic-Tac-Toe with a terminal interface.
+
+### JavaScript
+
+- [Tic-Tac-Toe in JavaScript](javascript/tic_tac_toe.js): JavaScript implementation of Tic-Tac-Toe that can be run in web browsers.
+
+## How to Run
+
+Each implementation of Tic-Tac-Toe has its own execution instructions. You can find specific details in the directories of each language mentioned above. Make sure to have the appropriate development environment set up for the respective language.
+
+## Contributions
+
+You are welcome to contribute more implementations in other languages or improve the existing ones. Follow the contribution guidelines and open a pull request to share your implementations.
+
+## License
+
+This project is licensed under the MIT License. Please see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+This project was inspired by the idea of demonstrating how a simple application can be created in multiple programming languages. We appreciate the open-source community for their contributions.
