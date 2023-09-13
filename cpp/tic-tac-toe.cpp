@@ -166,11 +166,20 @@ void requestEntryPlayer()
 
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED);
 
-    do
+    while (true)
     {
         cout << "Informe a linha (0, 1 ou 2) e a coluna (0, 1 ou 2) separadas por espaco: ";
         cin >> line >> column;
-    } while (line < 0 || line > 2 || column < 0 || column > 2 || board[line][column] != ' ');
+
+        if (line < 0 || line > 2 || column < 0 || column > 2 || board[line][column] != ' ')
+        {
+            cout << "Jogada Invalida! Tente novamente." << endl;
+        }
+        else
+        {
+            break;
+        }
+    }
 }
 
 // função da máquina
@@ -221,35 +230,26 @@ int main()
             // solicita a entrada do jogador
             requestEntryPlayer();
 
-            // verifica se a jogada é válida
-            if (board[line][column] != ' ')
+            // marca a jogada no tabuleiro
+            insertSymbolOnBoard(board, currentPlayer, line, column);
+
+            // verifica se o jogador venceu
+            if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
             {
-                cout << "Jogada invalida! Tente novamente." << endl;
-                continue;
+                displayFormattedBoard();
+                cout << "Jogador " << currentPlayer << " venceu!" << endl;
+                gameStatus = currentPlayer;
+            }
+            else if (gameTied())
+            {
+                displayFormattedBoard();
+                cout << "O jogo terminou em empate!" << endl;
+                gameStatus = 3; // 3 representa empate
             }
             else
             {
-                // marca a jogada no tabuleiro
-                insertSymbolOnBoard(board, currentPlayer, line, column);
-
-                // verifica se o jogador venceu
-                if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
-                {
-                    displayFormattedBoard();
-                    cout << "Jogador " << currentPlayer << " venceu!" << endl;
-                    gameStatus = currentPlayer;
-                }
-                else if (gameTied())
-                {
-                    displayFormattedBoard();
-                    cout << "O jogo terminou em empate!" << endl;
-                    gameStatus = 3; // 3 representa empate
-                }
-                else
-                {
-                    // alterna para o próximo jogador
-                    switchPlayer();
-                }
+                // alterna para o próximo jogador
+                switchPlayer();
             }
         }
 
