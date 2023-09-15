@@ -10,6 +10,16 @@ To date, only the C++ language has been implemented "tic-tac-toe", the other lan
 
 - [Tic-Tac-Toe in C++](cpp/tic-tac-toe.cpp): C++ implementation of Tic-Tac-Toe, where two players can play on the same computer.
 
+    - **Two-Player Mode**: Players can take turns to make their moves on the game board.
+    - **AI Opponent**: The computer opponent uses a simple algorithm to make its moves. It evaluates the game board to find the best available move.
+    - **Player Switching**: The game automatically alternates between Player 1 (X) and Player 2 (O) after each valid move.
+    - **Winning Conditions**: The implementation checks for victory conditions, where a player wins by filling three consecutive spaces horizontally, vertically, or diagonally with their symbol.
+    - **Draw Detection**: The game also detects when the board is full, resulting in a draw if neither player wins.
+    - **Play Again Option**: After the end of a match, players can choose to play another game without restarting the program.
+
+- **Attention:** this C++ implementation only works on the Windows operating system.
+
+
 <!-- ### Java
 
 - [Tic-Tac-Toe in Java](java/TicTacToe.java): Java implementation of Tic-Tac-Toe with a simple graphical interface.
