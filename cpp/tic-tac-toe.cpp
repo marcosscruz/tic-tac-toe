@@ -202,82 +202,183 @@ void makeMoveAI()
 // função para escolher o modo de jogo (P vc COM ou P vs P)
 int chooseGameMode()
 {
+    system("cls"); // Limpa a tela do console (funciona no Windows)
     int choice;
-    cout << "Escolha o modo de jogo: \n\t1. PvP \n\t2.PvCOM" << endl;
+    cout << "Escolha o modo de jogo: \n\t1. Player vs Player \n\t2. Player vs Computador" << endl;
     cin >> choice;
+    system("cls"); // Limpa a tela do console (funciona no Windows)
     return choice;
 }
 
 // Função principal
 int main()
 {
+    // escolhendo o modo de jogo
+    int gameMode = chooseGameMode();
+
     char playAgain;
 
-    do
+    switch (gameMode)
     {
-        // escolhendo o modo de jogo
-        int gameMode = chooseGameMode();
-
-        // inicializa o jogo
-        initializeGame();
-
-        // loop principal do jogo
-        while (gameStatus == 0)
+    case 1: // player vs player
+        do
         {
-            // exibe o tabuleiro
-            displayFormattedBoard();
+            // inicializa o jogo
+            initializeGame();
 
-            // solicita a entrada do jogador
-            requestEntryPlayer();
-
-            // marca a jogada no tabuleiro
-            insertSymbolOnBoard(board, currentPlayer, line, column);
-
-            // verifica se o jogador venceu
-            if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
+            // loop principal do jogo
+            while (gameStatus == 0)
             {
+                // exibe o tabuleiro
                 displayFormattedBoard();
-                cout << "Jogador " << currentPlayer << " venceu!" << endl;
-                gameStatus = currentPlayer;
+
+                // solicita a entrada do jogador
+                requestEntryPlayer();
+
+                // marca a jogada no tabuleiro
+                insertSymbolOnBoard(board, currentPlayer, line, column);
+
+                // verifica se o jogador venceu
+                if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
+                {
+                    displayFormattedBoard();
+                    cout << "Jogador " << currentPlayer << " venceu!" << endl;
+                    gameStatus = currentPlayer;
+                }
+                else if (gameTied())
+                {
+                    displayFormattedBoard();
+                    cout << "O jogo terminou em empate!" << endl;
+                    gameStatus = 3; // 3 representa empate
+                }
+                else
+                {
+                    // alterna para o próximo jogador
+                    switchPlayer();
+                }
             }
-            else if (gameTied())
+
+            // exibe o resultado
+            if (gameStatus == 1 || gameStatus == 2)
             {
-                displayFormattedBoard();
+                cout << "Jogador " << gameStatus << " venceu!" << endl;
+            }
+            else if (gameStatus == 3)
+            {
                 cout << "O jogo terminou em empate!" << endl;
-                gameStatus = 3; // 3 representa empate
+            }
+
+            // pergunta se os jogadores desejam jogar novamente
+            cout << "Deseja jogar novamente? (S/N): ";
+            cin >> playAgain;
+
+            if (playAgain == 'S' || playAgain == 's')
+            {
+                // reinicia o jogo
+                initializeGame();
             }
             else
             {
-                // alterna para o próximo jogador
-                switchPlayer();
+                cout << "Obrigado por jogar!" << endl;
             }
-        }
 
-        // exibe o resultado
-        if (gameStatus == 1 || gameStatus == 2)
-        {
-            cout << "Jogador " << gameStatus << " venceu!" << endl;
-        }
-        else if (gameStatus == 3)
-        {
-            cout << "O jogo terminou em empate!" << endl;
-        }
+        } while (playAgain == 'S' || playAgain == 's');
+        break;
 
-        // pergunta se os jogadores desejam jogar novamente
-        cout << "Deseja jogar novamente? (S/N): ";
-        cin >> playAgain;
-
-        if (playAgain == 'S' || playAgain == 's')
+    case 2: // player vs computador
+        do
         {
-            // reinicia o jogo
+            // inicializa o jogo
             initializeGame();
-        }
-        else
-        {
-            cout << "Obrigado por jogar!" << endl;
-        }
 
-    } while (playAgain == 'S' || playAgain == 's');
+            // loop principal do jogo
+            while (gameStatus == 0)
+            {
+                // exibe o tabuleiro
+                displayFormattedBoard();
+
+                // solicita a entrada do jogador
+                requestEntryPlayer();
+
+                // marca a jogada do jogador 1 no tabuleiro
+                insertSymbolOnBoard(board, currentPlayer, line, column);
+
+                displayFormattedBoard();
+
+                // verifica se o player 1 ganhou
+                if (playerWon((currentPlayer == 1) ? playerOneSymbol : playerTwoSymbol))
+                {
+                    displayFormattedBoard();
+                    cout << "Jogador " << currentPlayer << " venceu!" << endl;
+                    gameStatus = currentPlayer;
+                    break;
+                }
+                else if (gameTied())
+                {
+                    displayFormattedBoard();
+                    cout << "O jogo terminou em empate!" << endl;
+                    gameStatus = 3;
+                    break;
+                }
+
+                switchPlayer();
+
+                if (gameStatus != 0)
+                {
+                    break;
+                }
+
+                // vez da máquina (jogador 2)
+                makeMoveAI();
+
+                displayFormattedBoard();
+
+                // verifica se a máquina venceu
+                if (playerWon(playerTwoSymbol))
+                {
+                    cout << "A IA venceu!" << endl;
+                    gameStatus = 2;
+                    break;
+                }
+                else if (gameTied())
+                {
+                    cout << "O jogo terminou em empate!" << endl;
+                    gameStatus = 3;
+                    break;
+                }
+
+                switchPlayer();
+
+                // exibindo resultado
+                if (gameStatus == 1 || gameStatus == 2)
+                {
+                    cout << "Jogador " << gameStatus << " venceu!" << endl;
+                }
+                else if (gameStatus == 3)
+                {
+                    cout << "O jogo terminou em empate!" << endl;
+                }
+            }
+
+            // pergunta de jogar novamente
+            cout << "Deseja jogar novamente? (S/N): ";
+            cin >> playAgain;
+
+            if (playAgain == 'S' || playAgain == 's')
+            {
+                initializeGame();
+            }
+            else
+            {
+                cout << "Obrigado por jogar!" << endl;
+            }
+
+        } while (playAgain == 'S' || playAgain == 's');
+        break;
+
+    default:
+        cout << "Opcao Invalida! Tente novamente." << endl;
+    }
 
     return 0;
 }
