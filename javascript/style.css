@@ -24,13 +24,6 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    font-weight: bold;
-    height: 3px;
-    background: #f1f1f1;
-    margin-bottom: 10px;
-}
-
 .board {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -43,4 +36,43 @@ h2 {
     cursor: pointer;
     font-size: 50px;
     background: #f1f1f1;
+}
+
+.screen {
+    margin: auto;
+    padding: auto;
+    font-size: large;
+    text-align: center;
+}
+
+.screen button {
+    font-weight: bold;
+    transition-duration: 0.4s;
+    background-color: #f1f1f1;
+    border: none;
+    color: rgb(3, 13, 53);
+    padding: 14px 45px;
+    border-radius: 8px;
+    border: 2px solid #f1f1f1;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.screen button:hover {
+    font-weight: bold;
+    background-color: rgb(3, 13, 53);
+    color: white;
+}
+
+#returnHomeScreen1_2 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+#returnHomeScreen1_3 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
