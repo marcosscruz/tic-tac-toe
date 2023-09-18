@@ -9,24 +9,56 @@
 </head>
 
 <body>
-    <main>
-        <h1>Jogo da Velha</h1>
-        <hr />
-        <div class="board">
-            <button data-i="1"></button>
-            <button data-i="2"></button>
-            <button data-i="3"></button>
-            <button data-i="4"></button>
-            <button data-i="5"></button>
-            <button data-i="6"></button>
-            <button data-i="7"></button>
-            <button data-i="8"></button>
-            <button data-i="9"></button>
-        </div>
-        <h2 class="currentPLayer"></h2>
+    <!-- tela 1: escolha do modo de jogo -->
+    <div class="screen" id="screen1">
+        <h1>Escolha o Modo de Jogo</h1>
+        <button id="modePvP">P vs P</button>
+        <button id="modePvCOM">P vs COM</button>
+    </div>
+
+    <!-- tela 2: jogador contra jogador -->
+    <div class="screen" id="screen2" style="display: none;">
+        <h1>Player vs Player</h1>
+        <main>
+            <hr />
+            <div class="board">
+                <button data-i="1"></button>
+                <button data-i="2"></button>
+                <button data-i="3"></button>
+                <button data-i="4"></button>
+                <button data-i="5"></button>
+                <button data-i="6"></button>
+                <button data-i="7"></button>
+                <button data-i="8"></button>
+                <button data-i="9"></button>
+            </div>
+        </main>
+        <button id="returnHomeScreen1_2">Voltar</button>
+    </div>
+
     </main>
+    <!-- tela 3: jogador vs computador -->
+    <div class="screen" id="screen3" style="display: none;">
+        <h1>Player vs Computer</h1>
+        <main>
+            <hr />
+            <div class="board">
+                <button data-i="1"></button>
+                <button data-i="2"></button>
+                <button data-i="3"></button>
+                <button data-i="4"></button>
+                <button data-i="5"></button>
+                <button data-i="6"></button>
+                <button data-i="7"></button>
+                <button data-i="8"></button>
+                <button data-i="9"></button>
+            </div>
+        </main>
+        <button id="returnHomeScreen1_3">Voltar</button>
+    </div>
 
     <script src="tic-tac-toe.js"></script>
+
 </body>
 
 </html>
