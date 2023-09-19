@@ -19,6 +19,18 @@ To date, only the C++ language has been implemented "tic-tac-toe", the other lan
 
 - **Attention:** this C++ implementation only works on the Windows operating system.
 
+### JavaScript
+
+- [Tic-Tac-Toe in JavaScript](javascript/): JavaScript implementation of Tic-Tac-Toe that can be run in web browsers.
+
+    - **Two-Player Mode**: Players can take turns to make their moves on the game board.
+    - **AI Opponent**: The computer opponent uses a simple algorithm to make its moves. It evaluates the game board to find the best available move.
+    - **Player Switching**: The game automatically alternates between Player 1 (X) and Player 2 (O) after each valid move.
+    - **Winning Conditions**: The implementation checks for victory conditions, where a player wins by filling three consecutive spaces horizontally, vertically, or diagonally with their symbol.
+    - **Draw Detection**: The game also detects when the board is full, resulting in a draw if neither player wins.
+    - **Play Again Option**: After the end of a match, players can choose to play another game without restarting the program.
+
+- **Attention:** This JavaScript implementation can be run in web browsers.
 
 <!-- ### Java
 
@@ -26,11 +38,7 @@ To date, only the C++ language has been implemented "tic-tac-toe", the other lan
 
 ### Python
 
-- [Tic-Tac-Toe in Python](python/tic_tac_toe.py): Python implementation of Tic-Tac-Toe with a terminal interface.
-
-### JavaScript
-
-- [Tic-Tac-Toe in JavaScript](javascript/tic_tac_toe.js): JavaScript implementation of Tic-Tac-Toe that can be run in web browsers. -->
+- [Tic-Tac-Toe in Python](python/tic_tac_toe.py): Python implementation of Tic-Tac-Toe with a terminal interface. -->
 
 ## How to Run
 
