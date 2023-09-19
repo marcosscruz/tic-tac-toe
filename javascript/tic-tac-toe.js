@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const screen2 = document.getElementById("screen2");
     const screen3 = document.getElementById("screen3");
     const modePvP = document.getElementById("modePvP");
-    const modePvCOM = document.getElementById("modePvCOM");
+    const modePvIA = document.getElementById("modePvIA");
     const returnHomeScreen1_2 = document.getElementById("returnHomeScreen1_2");
     const returnHomeScreen1_3 = document.getElementById("returnHomeScreen1_3");
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         screen2.style.display = "block";
     });
 
-    modePvCOM.addEventListener("click", function () {
+    modePvIA.addEventListener("click", function () {
         screen1.style.display = "none";
         screen3.style.display = "block";
     });
