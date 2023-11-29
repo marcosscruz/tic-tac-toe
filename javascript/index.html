@@ -19,42 +19,39 @@
     <!-- tela 2: jogador contra jogador -->
     <div class="screen" id="screen2" style="display: none;">
         <h1>Player vs Player</h1>
-        <main>
-            <hr />
-            <div class="board">
-                <button data-i="1"></button>
-                <button data-i="2"></button>
-                <button data-i="3"></button>
-                <button data-i="4"></button>
-                <button data-i="5"></button>
-                <button data-i="6"></button>
-                <button data-i="7"></button>
-                <button data-i="8"></button>
-                <button data-i="9"></button>
-            </div>
-        </main>
+        <div class="board" id="board">
+            <button data-index="1"></button>
+            <button data-index="2"></button>
+            <button data-index="3"></button>
+            <button data-index="4"></button>
+            <button data-index="5"></button>
+            <button data-index="6"></button>
+            <button data-index="7"></button>
+            <button data-index="8"></button>
+            <button data-index="9"></button>
+        </div>
+        <p id="winningPlayer"></p>
         <button id="returnHomeScreen1_2">Voltar</button>
+        <button id="restartButton">Reiniciar</button>
     </div>
 
-    </main>
     <!-- tela 3: jogador vs computador -->
     <div class="screen" id="screen3" style="display: none;">
         <h1>Player vs IA</h1>
-        <main>
-            <hr />
-            <div class="board">
-                <button data-i="1"></button>
-                <button data-i="2"></button>
-                <button data-i="3"></button>
-                <button data-i="4"></button>
-                <button data-i="5"></button>
-                <button data-i="6"></button>
-                <button data-i="7"></button>
-                <button data-i="8"></button>
-                <button data-i="9"></button>
-            </div>
-        </main>
+        <div class="board" id="board2">
+            <button data-index="1"></button>
+            <button data-index="2"></button>
+            <button data-index="3"></button>
+            <button data-index="4"></button>
+            <button data-index="5"></button>
+            <button data-index="6"></button>
+            <button data-index="7"></button>
+            <button data-index="8"></button>
+            <button data-index="9"></button>
+        </div>
+        <p id="winningPlayer"></p>
         <button id="returnHomeScreen1_3">Voltar</button>
+        <button id="restartButton">Reiniciar</button>
     </div>
 
     <script src="tic-tac-toe.js"></script>
