@@ -34,15 +34,36 @@ To date, only the C++ language has been implemented "tic-tac-toe", the other lan
 
 <!-- ### Java
 
-- [Tic-Tac-Toe in Java](java/TicTacToe.java): Java implementation of Tic-Tac-Toe with a simple graphical interface.
+- [Tic-Tac-Toe in Java](java/TicTacToe.java): Java implementation of Tic-Tac-Toe with a simple graphical interface. -->
 
 ### Python
 
-- [Tic-Tac-Toe in Python](python/tic_tac_toe.py): Python implementation of Tic-Tac-Toe with a terminal interface. -->
+- [Tic-Tac-Toe in Python](python/tic-tac-toe.py): Python implementation of Tic-Tac-Toe using a graphical user interface (GUI).
+
+    - **Graphical User Interface**: The game utilizes Tkinter to create a simple GUI, where players can make their moves by clicking on the interactive buttons.
+
+    - **Two Game Modes**:
+        - **Player vs. Player (PvP)**: Two human players take turns to make their moves on the 3x3 game board.
+        - **Player vs. AI (PvAI)**: <!-- A single player can challenge the computer AI opponent. The AI uses a basic algorithm to determine its moves, providing a challenging experience. --> <span style="color:red">not yet implemented</span>
+
+
+    - **Player Turn Switching**: The game alternates between Player 1 (X) and Player 2 (O) in PvP mode. In PvAI mode, the player is always "X", and the AI is "O".
+
+    - **Move Validation**: The game ensures that a player cannot make a move on an already occupied space.
+
+    - **Winning Conditions**: Victory is achieved by filling three consecutive spaces horizontally, vertically, or diagonally with the player's symbol.
+
+    - **Draw Detection**: The game detects when the board is full and declares a draw if neither player achieves victory.
+
+    - **Game Restart Option**: After the end of each game, a message box appears to announce the result (win/defeat/draw), thus clearing the board and restarting the game.
 
 ## How to Run
 
 Each implementation of Tic-Tac-Toe has its own execution instructions. You can find specific details in the directories of each language mentioned above. Make sure to have the appropriate development environment set up for the respective language.
+
+## Tic Tac Toe Variation
+
+This variation of the game consists of a larger 3x3 board with other smaller boards of the same size within each cell of the larger board. I still need to formulate this idea further.
 
 ## Contributions
 
