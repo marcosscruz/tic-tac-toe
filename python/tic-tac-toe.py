@@ -17,17 +17,19 @@ class TicTacToe:
         self.window.mainloop()
 
     def make_move(self, line, pillar):
+        # verifica se a posição no tabuleiro está vazia
         if self.board[line][pillar] == " ":
             self.board[line][pillar] = self.turn
             self.update_button(line, pillar)
             
             if self.check_victory():
                 messagebox.showinfo("Fim do Jogo", f"Jogador {self.turn} venceu!")
-                self.restar_game()
+                self.restart_game()
             elif self.check_draw():
                 messagebox.showinfo("Fim do Jogo", "O jogo terminou em empate!")
-                self.restar_game()
+                self.restart_game()
             else:
+                # alterna para o próximo jogador
                 self.turn = "O" if self.turn == "X" else "X"
 
     def update_button(self, line, pillar):
@@ -35,21 +37,23 @@ class TicTacToe:
         btn.config(text=self.turn, state="disabled")
 
     def check_victory(self):
-        # Verifica lines e pillars
+        # verifica vitória nas linhas e colunas
         for i in range(3):
             if all(self.board[i][j] == self.turn for j in range(3)) or all(self.board[j][i] == self.turn for j in range(3)):
                 return True
 
-        # Verifica diagonais
+        # verifica vitória nas diagonais
         if all(self.board[i][i] == self.turn for i in range(3)) or all(self.board[i][2 - i] == self.turn for i in range(3)):
             return True
 
         return False
 
     def check_draw(self):
+        # verifica empate se todas as posições estiverem preenchidas
         return all(self.board[i][j] != " " for i in range(3) for j in range(3))
 
-    def restar_game(self):
+    def restart_game(self):
+        # reinicia o jogo, reativando os botões e limpando o tabuleiro
         self.turn = "X"
         self.board = [[" " for _ in range(3)] for _ in range(3)]
 
@@ -59,4 +63,4 @@ class TicTacToe:
                 btn.config(text=" ", state="active")
 
 if __name__ == "__main__":
-    game_mode = input('Escolha o modo de Jogo: \n\t1. PvP \n\t2. PvIA')
+    game = TicTacToe()  
